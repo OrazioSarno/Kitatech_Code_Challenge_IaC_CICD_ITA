@@ -31,11 +31,12 @@ Continuous Integration:
      Eseguire il test realizzato al punto 6 in automatico ad ogni push di codice sul repository  
 
 Riferimenti utili:
+
 • Ansible User Guide:
 https://docs.ansible.com/ansible/latest/user_guide/index.html
 • Ansible Galaxy: https://galaxy.ansible.com/ 
 • Best Practices: http://hakunin.com/six-ansible-practices  
-• Testing Ansible provisioning locally: https://www.hamvocke.com/blog/local- ansible-testing/  
+• Testing Ansible provisioning locally: https://www.hamvocke.com/blog/local-ansible-testing/  
 • Testing Ansible roles and playbooks:  
 https://www.digitalocean.com/community/tutorials/how-to-implement-continuous-testing-of-ansible-roles-using-molecule-and-travis-ci-on-ubuntu-18-04
 • Importanza del version pinning: in generale, legato a Docker e infrastruttura 
