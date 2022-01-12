@@ -1,0 +1,52 @@
+# see https://docs.docker.com/engine/install/centos/
+# see https://medium.com/@admin_12157/installing-docker-using-ansible-playbook-in-centos7-b47bb3e7874
+#Configure the VMs: a. Make sure that the partition used by Docker has at least 40GB of free space by making an appropriate resize.
+#    Docker setup on VMs
+#    Configure Docker: a. Securely expose the Docker Daemon REST APIs b. Make sure the Docker Daemon is configured as a service that starts automatically on system startup
+#   Set up a Docker Swarm on the VMs, which is securely accessible. Make sure you are able to interact and deploy services on the Swarm from the local machine.
+
+- name: Docker Setup
+  hosts: centosVM1,centosVM2
+  become: yes
+
+  tasks:
+    - name: Uninstall old versions
+      yum:
+        name:
+          - docker 
+          - docker-client 
+          - docker-client-latest
+          - docker-common
+          - docker-latest 
+          - docker-latest-logrotate
+          - docker-logrotate 
+          - docker-engine
+        state: absent
+    - name: "Installing Docker Prerequisite packages"
+      yum:
+        name: 
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: latest
+    - name: "Configuring docker-ce repo"
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+        mode: 0644
+    - name: " Installing Docker latest version"
+      yum:
+        name: 
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+    - name: Runtime directory and storage driver
+      copy:
+        src: daemon.json
+        dest: /etc/docker/daemon.json
+    - name: "Starting and Enabling Docker service"
+      service:
+        name: docker
+        state: restarted
+        enabled: yes

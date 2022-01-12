@@ -1,0 +1,19 @@
+- name: Create VM
+  azure_rm_virtualmachine:
+    resource_group: "{{ resourceGroup }}"
+    name: "{{ name }}"
+    vm_size: Standard_DS1_v2
+    admin_username: azureuser
+    ssh_password_enabled: false
+    ssh_public_keys:
+      - path: /home/azureuser/.ssh/authorized_keys
+        key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDL7DAFG+KFpqgit/XJaMp2OLBxuH92TrV/UwpB+IvVW9wc+3vTlywfQzJgriLIYj7ajQO85h2Hb+62qzZ/1k/Pfo/wTwY7Mj+v0vcQ2SMzqb7S3FNJ+wK6gRffS9erTtwyskk1i6FG77ghvhPaujmW9T1CcFWWUErz79DKAyx0njI+UgSzywEgFRv8aoUAnrui1RNVZMfWy7JV+fIjEH+oBY9NtGYCBmqjB56bibrSqi7RR3kYH3NauY6aR98NjU6TbbbIor81GdpOPCBLxDJfLGK7bb+Iv6WvB1grhH3CZ+4mbME0KO28gLM20fRtM0mqidVpU+33E5rFUo5dz0nuzcVy0ZlFIMlCEqeEja0JM8uZoHEqSUPoSiATBnNtAZflRuaUlXaaPjrf3/ooFV5a8T+9Web0mHT9UxjG3Ez3kdv3HhP1w2GnzB4TNiCl1URONOBCITJ97WnCFA8qbvkSRr/n+BFUW/I9g8nOzNL9J27ErMN2BRYYILm/mWjluXGcfig+lbw+1XVwI4oGk7Hz/Zpxr/52+0DqYm5xCebnfLZpD3vzF6K0/8C/Tvtj1UyRSztKzbFO2kikduAWnfhFHR6LaKtUFHZCbAKPgOE/gYkKdFwWPCtboYXRiAOnVQc3JQIRT/DbEYjEhiWbWnX7VKhWRaEYocwvzATlA3IStw== azureuser@QuickstartAnsible-vm"
+    network_interfaces: "{{ networkInterfaces }}"
+    image:
+      offer: CentOS
+      publisher: OpenLogic
+      sku: '7.5'
+      version: latest
+    data_disks:
+      - lun: 0
+        disk_size_gb: 64

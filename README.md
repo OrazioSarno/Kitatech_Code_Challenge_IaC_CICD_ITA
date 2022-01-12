@@ -1,43 +1,52 @@
 # Kitatech_Code_Challenge_IaC_CICD_ITA
-Realizzare un playbook Ansible che permetta di svolgere le seguenti attivita': 
+Introduction
 
-1. Provisioning di due VM CentOS. Le VM possono essere locali oppure su un Cloud provider a scelta. 
-2. Configurare le VM: 
-   a. Assicurarsi che la partizione utilizzata da Docker abbia almeno 40GB di spazio disponibile, effettuando un opportuno resize. 
-3. Setup di Docker sulle VM 
-4. Configurare Docker: 
-  a. Esporre le API REST del Docker Daemon in modo sicuro 
-  b. Assicurarsi che il Docker Daemon sia configurato come un servizio che parta automaticamente all'avvio del sistema 
-5. Configurare un Docker Swarm sulle VM, che sia accessibile in modo sicuro. 
-   Assicurarsi di riuscire ad interagire e deployare servizi sullo Swarm dalla macchina locale. 
+The goal of this project is to:
+Create an Ansible playbook that allows you to perform the following activities:
 
-Opzionalmente:
+    Provisioning of two CentOS VMs. The VMs can be local or on a Cloud provider of your choice.
+    Configure the VMs: a. Make sure that the partition used by Docker has at least 40GB of free space by making an appropriate resize.
+    Docker setup on VMs
+    Configure Docker: a. Securely expose the Docker Daemon REST APIs b. Make sure the Docker Daemon is configured as a service that starts automatically on system startup
+    Set up a Docker Swarm on the VMs, which is securely accessible. Make sure you are able to interact and deploy services on the Swarm from the local machine.
 
-6. Testare un task a scelta dei precedenti utilizzando Molecule
-Rappresentare ogni attivita' con opportuni ruoli Ansible e relativi task. 
-E' altamente  consigliato il riuso di ruoli e playbook Ansible resi disponibili nella community open- source (alcuni dei quali gia' linkati nel testo a mo' di esempio e in basso tra i  riferimenti utili). 
-In caso di riutilizzo di codice e' importante motivare I criteri di selezione del ruolo, conoscerne le feature e I contenuti, e saper descrivere eventuali personalizzazioni effettuate ai fini di svolgere le attivita' di cui sopra. 
+Optionally:
 
-Versioning del Codice: 
-  1. Versionare il codice su un repository pubblico su Github.com, in modo che vi sia una chiara descrizione del lavoro svolto nella History del repository;
+    Test a task chosen from the previous ones using Molecule Represent each activity with appropriate Ansible roles and related tasks. The reuse of Ansible roles and playbooks made available in the open-source community is highly recommended (some of which are already linked in the text as an example and below for useful references). In case of code reuse it is important to motivate the role selection criteria, to know its features and contents, and to be able to describe any customizations made in order to carry out the above activities.
 
-Continuous Integration: 
-  1. Configurare una pipeline di Continuous Integration su un tool a scelta 
-  (consiglio: Travis, per la semplice integrazione con GitHub, Ansible Docker); 
-  2. La pipeline deve:
-     a. Eseguire il linting del codice e fallire in caso di errori, che vanno opportunamente corretti
-     
-     Opzionalmente:
-     Eseguire il test realizzato al punto 6 in automatico ad ogni push di codice sul repository  
+Versioning of the Code:
 
-Riferimenti utili:
+    Versioning the code on a public repository on Github.com, so that there is a clear description of the work done in the History of the repository;
 
-• Ansible User Guide:
-https://docs.ansible.com/ansible/latest/user_guide/index.html
-• Ansible Galaxy: https://galaxy.ansible.com/ 
-• Best Practices: http://hakunin.com/six-ansible-practices  
-• Testing Ansible provisioning locally: https://www.hamvocke.com/blog/local-ansible-testing/  
-• Testing Ansible roles and playbooks:  
-https://www.digitalocean.com/community/tutorials/how-to-implement-continuous-testing-of-ansible-roles-using-molecule-and-travis-ci-on-ubuntu-18-04
-• Importanza del version pinning: in generale, legato a Docker e infrastruttura 
-• Playbook ricco di ruoli e ben documentato per il setup di Docker Enterprise Edition: https://github.com/HewlettPackard/Docker-SimpliVity
+Continuous Integration:
+
+    Configure a Continuous Integration pipeline on a tool of your choice (advice: Travis, for simple integration with GitHub, Ansible Docker);
+
+    The pipeline must: a. Lint the code and fail in case of errors, which must be corrected accordingly
+
+    Optionally: Execute the test performed at point 6 automatically at each push of code to the repository
+
+Useful references:
+
+• Ansible User Guide: https://docs.ansible.com/ansible/latest/user_guide/index.html • Ansible Galaxy: https://galaxy.ansible.com/ • Best Practices: http://hakunin.com/ six-ansible-practices
+• Testing Ansible provisioning locally: https://www.hamvocke.com/blog/local-ansible-testing/
+• Testing Ansible roles and playbooks:
+https://www.digitalocean.com/community/tutorials/how-to-implement-continuous-testing-of-ansible-roles-using-molecule-and-travis-ci-on-ubuntu-18-04 • Importance of version pinning: in general, tied to Docker and infrastructure • Role-rich and well-documented playbook for Docker Enterprise Edition setup: https://github.com/HewlettPackard/Docker-SimpliVity 
+
+Dependencies
+
+    Ansible
+    Python
+        jmespath
+    Ruby
+
+Setup
+
+Generate RSA ssh key pair:
+
+$ ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa -q
+
+Usage
+
+# go to project directory
+$ cd /.../Kitatech_Code_Challenge_IaC_CICD_ITA
